@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <title>Arbitraz Team</title>
+  </head>
+  <body>
+    <main class="container">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <img src="./carO.webp" class="img-fluid rounded my-3" alt="car" />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
+            suscipit accusantium excepturi quidem quod nisi sapiente
+            praesentium, adipisci blanditiis et at facere natus fuga, similique
+            aut impedit consequatur eaque corrupti.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae
+            suscipit accusantium excepturi quidem quod nisi sapiente
+            praesentium, adipisci blanditiis et at facere natus fuga, similique
+            aut impedit consequatur eaque corrupti.
+          </p>
+        </div>
+
+        <form class="col-12 col-sm-6" id="form">
+          <div class="form-group mb-3 mt-3">
+            <label for="firstName">First name</label>
+            <input
+              class="form-control"
+              id="firstName"
+              aria-describedby="firstNameHelp"
+              placeholder="First name"
+            />
+            <small id="firstNameHelp" class="form-text text-muted"
+              >Please, enter your first name</small
+            >
+          </div>
+
+          <div class="form-group mb-3 mt-3">
+            <label for="lastName">Last name</label>
+            <input
+              class="form-control"
+              id="lastName"
+              aria-describedby="lastNameHelp"
+              placeholder="Last name"
+            />
+            <small id="lastNameHelp" class="form-text text-muted"
+              >Please, enter your last name</small
+            >
+          </div>
+
+          <div class="form-group mb-3 mt-3">
+            <label for="email">Email address</label>
+            <input
+              class="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Email"
+              type="email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >Please, enter your email</small
+            >
+          </div>
+
+          <div class="form-group mb-3 mt-3">
+            <label for="phoneNumber">Phone number</label>
+            <input
+              class="form-control"
+              id="phoneNumber"
+              aria-describedby="phoneNumberHelp"
+              type="tel"
+            />
+            <small id="phoneNumberHelp" class="form-text text-muted"
+              >Please, enter your phone number</small
+            >
+          </div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  <script>
+    function getIp(callback) {
+      fetch('https://ipinfo.io/json?token=91c508ecb14026', {
+        headers: { Accept: 'application/json' },
+      })
+        .then((resp) => resp.json())
+        .catch(() => ({
+          country: 'us',
+        }))
+        .then((resp) => {
+          callback(resp.country);
+        });
+    }
+    const phoneInputField = document.getElementById('phoneNumber');
+    const phoneInput = window.intlTelInput(phoneInputField, {
+      initialCountry: 'auto',
+      geoIpLookup: getIp,
+      preferredCountries: ['gb', 'tw', 'ua', 'at', 'us'],
+      utilsScript:
+        'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
+    });
+  </script>
+  <script src="./index.js"></script>
+</html>
